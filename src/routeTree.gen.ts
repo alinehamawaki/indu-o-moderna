@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FundamentosRouteImport } from './routes/fundamentos'
 import { Route as LaboratorioRouteImport } from './routes/laboratorio'
 import { Route as ArtigosIndexRouteImport } from './routes/artigos.index'
@@ -18,6 +19,11 @@ import { Route as ArtigosSlugRouteImport } from './routes/artigos.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FundamentosRoute = FundamentosRouteImport.update({
@@ -43,6 +49,7 @@ const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
   '/fundamentos': typeof FundamentosRoute
   '/laboratorio': typeof LaboratorioRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
   '/fundamentos': typeof FundamentosRoute
   '/laboratorio': typeof LaboratorioRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/faq': typeof FaqRoute
   '/fundamentos': typeof FundamentosRoute
   '/laboratorio': typeof LaboratorioRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
@@ -66,12 +75,24 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/fundamentos' | '/laboratorio' | '/artigos/$slug' | '/artigos/'
+    | '/'
+    | '/faq'
+    | '/fundamentos'
+    | '/laboratorio'
+    | '/artigos/$slug'
+    | '/artigos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/fundamentos' | '/laboratorio' | '/artigos/$slug' | '/artigos'
+  to:
+    | '/'
+    | '/faq'
+    | '/fundamentos'
+    | '/laboratorio'
+    | '/artigos/$slug'
+    | '/artigos'
   id:
     | '__root__'
     | '/'
+    | '/faq'
     | '/fundamentos'
     | '/laboratorio'
     | '/artigos/$slug'
@@ -80,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FaqRoute: typeof FaqRoute
   FundamentosRoute: typeof FundamentosRoute
   LaboratorioRoute: typeof LaboratorioRoute
   ArtigosSlugRoute: typeof ArtigosSlugRoute
@@ -93,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fundamentos': {
@@ -128,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FaqRoute: FaqRoute,
   FundamentosRoute: FundamentosRoute,
   LaboratorioRoute: LaboratorioRoute,
   ArtigosSlugRoute: ArtigosSlugRoute,
