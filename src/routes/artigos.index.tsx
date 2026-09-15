@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { artigos } from "@/data/artigos";
 
-export const Route = createFileRoute("/artigos")({
+export const Route = createFileRoute("/artigos/")({
   head: () => ({
     meta: [
       { title: "Artigos sobre indução eletromagnética — Fluxo & Campo" },
