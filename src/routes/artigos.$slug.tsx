@@ -49,18 +49,20 @@ function PaginaArtigo() {
 
       <Blocos blocos={artigo.blocos} />
 
-      <div className="mt-16 border-t border-border/70 pt-8">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          Próxima leitura
-        </p>
-        <Link
-          to="/artigos/$slug"
-          params={{ slug: proximo.slug }}
-          className="mt-3 block font-serif text-2xl font-semibold text-foreground hover:text-flux"
-        >
-          {proximo.titulo}
-        </Link>
-      </div>
+      {proximo ? (
+        <div className="mt-16 border-t border-border/70 pt-8">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            Próxima leitura
+          </p>
+          <Link
+            to="/artigos/$slug"
+            params={{ slug: proximo.slug }}
+            className="mt-3 block font-serif text-2xl font-semibold text-foreground hover:text-flux"
+          >
+            {proximo.titulo}
+          </Link>
+        </div>
+      ) : null}
     </article>
   );
 }

@@ -6,8 +6,8 @@ export function Formula({
   inline = false,
 }: {
   latex: string;
-  legenda?: string;
-  inline?: boolean;
+  legenda?: string | undefined;
+  inline?: boolean | undefined;
 }) {
   const html = katex.renderToString(latex, {
     displayMode: !inline,
