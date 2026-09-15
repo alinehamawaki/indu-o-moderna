@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LaboratorioRouteImport } from './routes/laboratorio'
 import { Route as ArtigosIndexRouteImport } from './routes/artigos.index'
 import { Route as ArtigosSlugRouteImport } from './routes/artigos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaboratorioRoute = LaboratorioRouteImport.update({
+  id: '/laboratorio',
+  path: '/laboratorio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArtigosIndexRoute = ArtigosIndexRouteImport.update({
@@ -31,30 +37,34 @@ const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/laboratorio': typeof LaboratorioRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/laboratorio': typeof LaboratorioRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/artigos': typeof ArtigosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/laboratorio': typeof LaboratorioRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
   '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/artigos/$slug' | '/artigos/'
+  fullPaths: '/' | '/laboratorio' | '/artigos/$slug' | '/artigos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/artigos/$slug' | '/artigos'
-  id: '__root__' | '/' | '/artigos/$slug' | '/artigos/'
+  to: '/' | '/laboratorio' | '/artigos/$slug' | '/artigos'
+  id: '__root__' | '/' | '/laboratorio' | '/artigos/$slug' | '/artigos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LaboratorioRoute: typeof LaboratorioRoute
   ArtigosSlugRoute: typeof ArtigosSlugRoute
   ArtigosIndexRoute: typeof ArtigosIndexRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/laboratorio': {
+      id: '/laboratorio'
+      path: '/laboratorio'
+      fullPath: '/laboratorio'
+      preLoaderRoute: typeof LaboratorioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/artigos/': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LaboratorioRoute: LaboratorioRoute,
   ArtigosSlugRoute: ArtigosSlugRoute,
   ArtigosIndexRoute: ArtigosIndexRoute,
 }
