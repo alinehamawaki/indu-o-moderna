@@ -368,6 +368,217 @@ export const artigos: Artigo[] = [
       },
     ],
   },
+  {
+    slug: "campo-eletrico-induzido",
+    titulo: "Campo elétrico induzido: o campo que não tem potencial",
+    resumo:
+      "Um fluxo magnético variável cria campo elétrico mesmo no vácuo, sem cargas. E esse campo, ao contrário do eletrostático, não é conservativo.",
+    categoria: "Fundamento — Aula 33",
+    leitura: "10 min",
+    icone: "🌐",
+    destaque: "∮E·dl = −dΦ_B/dt",
+    blocos: [
+      {
+        tipo: "paragrafo",
+        texto:
+          "A lei de Faraday costuma ser apresentada com uma espira condutora: o fluxo varia, aparece corrente. Mas a afirmação é mais profunda. Um fluxo magnético variável gera campo elétrico sempre — inclusive no vácuo, sem nenhum condutor e sem nenhuma carga presente. A espira é apenas o detector.",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Considere uma espira circular de raio r num campo magnético uniforme perpendicular ao seu plano. O trabalho para levar uma carga de prova q ao longo de todo o circuito é W = q∮E·dl, e o trabalho por unidade de carga é, por definição, a força eletromotriz.",
+      },
+      {
+        tipo: "formula",
+        latex: "\\varepsilon = \\frac{W}{q} = \\oint \\vec{E}\\cdot d\\vec{l} = -\\frac{d\\Phi_B}{dt}",
+        legenda: "Forma integral da lei de Faraday. A lei de Lenz fixa o sentido de E ao longo da curva.",
+      },
+      { tipo: "subtitulo", texto: "A demonstração da não conservatividade" },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Num campo eletrostático, a diferença de potencial entre dois pontos não depende do caminho. Fazendo o ponto final coincidir com o inicial, a integral fechada é necessariamente nula — essa é a assinatura matemática de um campo conservativo.",
+      },
+      {
+        tipo: "formula",
+        latex:
+          "V_b - V_a = -\\int_a^b \\vec{E}\\cdot d\\vec{l} \\;\\;\\Longrightarrow\\;\\; \\oint_{\\text{estático}} \\vec{E}\\cdot d\\vec{l} = 0",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Para o campo induzido, porém, essa mesma integral fechada vale −dΦ_B/dt, que é diferente de zero sempre que o fluxo varia. Logo o campo induzido não é conservativo: o trabalho depende do caminho, e uma carga pode dar voltas ganhando energia continuamente.",
+      },
+      {
+        tipo: "nota",
+        titulo: "Consequência conceitual",
+        texto:
+          "Não existe potencial escalar V para o campo elétrico induzido. Potencial e energia potencial elétrica simplesmente não têm significado aqui — falar em 'a tensão em um ponto' de um circuito com fluxo variável é ambíguo, pois o valor medido depende de por onde passam os fios do voltímetro.",
+      },
+      {
+        tipo: "lista",
+        itens: [
+          "Campo de cargas: linhas abertas, começam em carga positiva e terminam em negativa.",
+          "Campo induzido: linhas sempre fechadas, sem extremidade livre — não há fonte nem sumidouro.",
+          "O campo induzido existe independentemente de haver carga de prova; uma carga livre numa região de B variável sente força.",
+          "Em forma diferencial: ∇ × E = −∂B/∂t, uma das quatro equações de Maxwell.",
+        ],
+      },
+      { tipo: "subtitulo", texto: "Exemplo: dentro e fora de um solenoide" },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Um solenoide longo de raio R, com n espiras por metro, conduz i = I₀·cos(ωt). O campo no interior vale B = μ₀ n i e é praticamente nulo fora. Tomando circunferências de integração concêntricas ao eixo:",
+      },
+      {
+        tipo: "formula",
+        latex:
+          "r < R:\\;\\; E = \\frac{\\mu_0 n I_0 \\omega\\, r}{2}\\sin(\\omega t) \\qquad r > R:\\;\\; E = \\frac{\\mu_0 n I_0 \\omega R^2}{2r}\\sin(\\omega t)",
+        legenda: "Dentro, E cresce linearmente com r; fora, decai com 1/r — mesmo onde B é nulo.",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Note o resultado surpreendente: fora do solenoide não há campo magnético algum, e ainda assim existe campo elétrico induzido. O que importa não é o valor local de B, mas o fluxo abraçado pela curva de integração.",
+      },
+      {
+        tipo: "formula",
+        latex: "|E| = \\frac{r}{2}\\left|\\frac{dB}{dt}\\right|",
+        legenda: "Caso particular: campo uniforme variando dentro de uma região circular.",
+      },
+    ],
+  },
+  {
+    slug: "correntes-de-foucault",
+    titulo: "Correntes de Foucault: o vilão que virou ferramenta",
+    resumo:
+      "Como redemoinhos de corrente surgem em condutores maciços, por que os núcleos são laminados em forma de pente e onde essa dissipação passa a ser útil.",
+    categoria: "Fundamento — Aula 33",
+    leitura: "11 min",
+    icone: "🌊",
+    destaque: "núcleos laminados",
+    blocos: [
+      {
+        tipo: "paragrafo",
+        texto:
+          "Imagine uma placa metálica maciça se movendo para a direita, com parte de sua área dentro de um campo magnético e parte fora. À medida que ela sai do campo, o fluxo abraçado por qualquer circuito imaginário desenhado na placa diminui. Pela lei de Faraday, surge fem; como o metal é um bom condutor, surge corrente.",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Essas correntes não seguem um fio: fecham-se em laços dentro do próprio volume do condutor, como redemoinhos. São as correntes de Foucault, batizadas em homenagem a Jean B. L. Foucault (1819-1868), que mostrou que a frenagem da placa vem da força magnética sobre essas correntes e que a energia se converte em calor por efeito Joule.",
+      },
+      {
+        tipo: "formula",
+        latex: "\\vec{F} = i\\,\\vec{L}\\times\\vec{B} \\qquad P_{J} = R\\,i^2",
+        legenda: "A força resultante se opõe ao movimento (Lenz) e a potência dissipada aquece o metal.",
+      },
+      { tipo: "subtitulo", texto: "Por que só o lado dentro do campo conta" },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Analisando os quatro lados do laço de corrente na placa: o lado que está dentro do campo experimenta i·L × B não nulo, apontando contra o movimento. O lado oposto está fora da região de campo, onde B = 0, e portanto não sofre força. Os dois lados transversais têm forças opostas que se cancelam. O saldo é uma força de frenagem.",
+      },
+      { tipo: "subtitulo", texto: "O problema: perdas em motores e transformadores" },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Dentro de um transformador ou de um motor, o núcleo de ferro é um condutor maciço imerso num campo que varia 60 vezes por segundo. Correntes de Foucault gigantescas circulariam nele, aquecendo o ferro e roubando potência útil — uma perda direta no rendimento da máquina, além de risco térmico para o isolamento dos enrolamentos.",
+      },
+      {
+        tipo: "nota",
+        titulo: "A solução: núcleos laminados",
+        texto:
+          "Em vez de um bloco maciço, o núcleo é montado com finas chapas de aço-silício empilhadas e isoladas entre si por verniz ou óxido — um núcleo fatiado, em forma de pente. As lâminas são paralelas ao campo, de modo que o caminho magnético continua contínuo, mas os laços de corrente ficam confinados a cada fatia fina. Como a fem induzida em cada laço cai e a resistência do caminho estreito sobe, a dissipação despenca. As perdas caem aproximadamente com o quadrado da espessura da lâmina.",
+      },
+      {
+        tipo: "lista",
+        itens: [
+          "Lâminas típicas de 0,20 a 0,50 mm em transformadores de potência.",
+          "Em alta frequência, usam-se ferrites: cerâmicas ferromagnéticas de resistividade altíssima, onde eddy currents praticamente não circulam.",
+          "O silício no aço aumenta a resistividade e reduz ainda mais as perdas.",
+          "Fios trançados (litz) combatem o mesmo fenômeno dentro dos próprios condutores.",
+        ],
+      },
+      { tipo: "subtitulo", texto: "A virada: quando a perda é o produto" },
+      {
+        tipo: "paragrafo",
+        texto:
+          "O mesmo efeito que estraga um transformador é a razão de ser de outras tecnologias. No cooktop de indução, a panela é deliberadamente feita de material que dissipa bem, e todo o calor do jantar vem de correntes de Foucault. Em freios dinâmicos de trens e montanhas-russas, a força contrária ao movimento é justamente o que se deseja: frenagem sem contato, sem pastilhas e sem desgaste.",
+      },
+      {
+        tipo: "lista",
+        itens: [
+          "Fornos de indução industriais: fundem toneladas de metal sem chama.",
+          "Solda e tratamento térmico por indução: aquecimento localizado e controlado.",
+          "Amortecimento de balanças e galvanômetros: o ponteiro para sem oscilar.",
+          "Detectores de metais e separadores de alumínio em reciclagem.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "fem-de-movimento-relatividade",
+    titulo: "Fem de movimento ε = Blv e a relatividade entre observadores",
+    resumo:
+      "Dois observadores discordam sobre a origem da força — um vê força magnética, o outro vê campo elétrico — mas medem exatamente a mesma fem.",
+    categoria: "Fundamento — Aula 33",
+    leitura: "9 min",
+    icone: "🚀",
+    destaque: "F/q = E + v × B",
+    blocos: [
+      {
+        tipo: "paragrafo",
+        texto:
+          "Considere uma barra condutora de comprimento l deslizando com velocidade v, perpendicularmente a um campo magnético B. Cada portador de carga dentro do metal se move junto com a barra e, por isso, sofre a força magnética de Lorentz.",
+      },
+      {
+        tipo: "formula",
+        latex: "\\vec{F}_m = q\\,\\vec{v}\\times\\vec{B}",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Essa força empurra as cargas ao longo da barra. O trabalho realizado sobre a carga ao percorrer o comprimento l é W = qvBl, e a força eletromotriz é o trabalho por unidade de carga:",
+      },
+      {
+        tipo: "formula",
+        latex: "\\varepsilon = \\frac{W}{q} = B\\,l\\,v",
+        legenda: "Fem de movimento — idêntica ao resultado obtido pela variação do fluxo, ε = −dΦ/dt.",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "A componente da força paralela ao fio é equilibrada pelas colisões internas do metal, o que mantém a velocidade de arraste constante; a componente transversal tende a empurrar a carga contra a parede lateral do condutor. O resultado macroscópico é uma corrente estacionária no circuito.",
+      },
+      { tipo: "subtitulo", texto: "O mesmo fenômeno, duas explicações" },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Um observador S, em repouso em relação ao ímã, vê o circuito se movendo: para ele a corrente nasce da força magnética qv × B. Já um observador S', em repouso em relação ao circuito, não vê as cargas se moverem lateralmente — para ele é o campo magnético que se desloca. Ele precisa postular um campo elétrico induzido entre as extremidades da barra para explicar a mesma corrente.",
+      },
+      {
+        tipo: "formula",
+        latex: "S:\\;\\; \\frac{\\vec{F}}{q} = \\vec{v}\\times\\vec{B} \\qquad S':\\;\\; \\frac{\\vec{F}}{q} = \\vec{E} \\qquad \\varepsilon_S = \\varepsilon_{S'} = Blv",
+      },
+      {
+        tipo: "nota",
+        titulo: "A síntese",
+        texto:
+          "Observadores em diferentes estados de movimento medem a mesma força eletromotriz induzida, mas discordam sobre a origem da força que a produz. Para um terceiro observador, que vê tanto o circuito quanto o campo em movimento, a força é uma combinação das duas contribuições.",
+      },
+      {
+        tipo: "formula",
+        latex: "\\vec{F} = q\\vec{E} + q\\,\\vec{v}\\times\\vec{B} \\;\\Longrightarrow\\; \\frac{\\vec{F}}{q} = \\vec{E} + \\vec{v}\\times\\vec{B}",
+        legenda: "A força total por unidade de carga é a mesma para todos; só a divisão entre elétrico e magnético muda.",
+      },
+      {
+        tipo: "paragrafo",
+        texto:
+          "Essa constatação não é um detalhe técnico: foi exatamente ela que motivou Einstein a abrir o artigo de 1905 sobre relatividade restrita discutindo a indução entre ímã e condutor. Campo elétrico e campo magnético não são entidades independentes — são faces do mesmo campo eletromagnético, e a divisão entre elas depende do referencial.",
+      },
+    ],
+  },
 ];
 
 export function getArtigo(slug: string) {
