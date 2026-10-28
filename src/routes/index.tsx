@@ -31,15 +31,14 @@ function Home() {
       <section className="grid-bg border-b border-border/70">
         <div className="mx-auto max-w-6xl px-5 py-20 md:py-28">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-flux">
-            Física III · Aulas 33 e 34
+            Fundamentos de Eletromagnetismo - UFMG
           </p>
           <h1 className="mt-5 max-w-4xl text-balance-tight text-4xl font-semibold leading-[1.1] text-foreground md:text-6xl">
-            A variação do fluxo magnético move o mundo moderno
+            Indução eletromagnética e suas aplicações
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-foreground/80">
-            Um blog educativo sobre indução eletromagnética: do campo elétrico induzido não
-            conservativo às usinas, motores, cooktops e carregadores sem fio. Teoria rigorosa,
-            linguagem clara e simuladores para brincar com os números.
+            Produção de conteúdo para a disciplina de Fundamentos de Eletromagnetismo - UFMG sobre indução eletromagnética: do campo elétrico induzido não
+            conservativo às usinas, motores, cooktops e carregadores sem fio.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -60,7 +59,7 @@ function Home() {
           <div className="mt-14 max-w-2xl">
             <Formula
               latex="\varepsilon = \oint \vec{E}\cdot d\vec{l} = -\frac{d\Phi_B}{dt}"
-              legenda="Lei de Faraday-Neumann-Lenz: a única equação de que você precisa para entender tudo o que vem a seguir."
+              legenda="Lei de Faraday-Neumann-Lenz"
             />
           </div>
         </div>
@@ -69,13 +68,13 @@ function Home() {
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { k: "ε = −dΦ/dt", d: "Fem induzida pela taxa de variação do fluxo" },
-            { k: "L = μ₀n²V", d: "Autoindutância de um solenoide ideal" },
-            { k: "u = B²/2μ₀", d: "Densidade de energia no campo magnético" },
-            { k: "F/q = E + v×B", d: "A força que todos os observadores concordam" },
+            { k: "\\varepsilon = -\\frac{d\\Phi_B}{dt}", d: "Fem induzida pela taxa de variação do fluxo" },
+            { k: "L = \\mu_0 n^2 V", d: "Autoindutância de um solenoide ideal" },
+            { k: "u = \\frac{B^2}{2\\mu_0}", d: "Densidade de energia no campo magnético" },
+            { k: "\\frac{F}{q} = E + \\mathbf{v} \\times \\mathbf{B}", d: "A força que todos os observadores concordam" },
           ].map((item) => (
-            <div key={item.k} className="rounded-lg border border-border bg-card/60 p-5">
-              <p className="font-mono text-base text-flux">{item.k}</p>
+            <div key={item.d} className="rounded-lg border border-border bg-card/60 p-5">
+              <Formula latex={item.k} />
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.d}</p>
             </div>
           ))}
@@ -113,19 +112,32 @@ function Home() {
         </div>
       </section>
 
+      {/* Seção unificada: Base teórica e Fundamentos físicos */}
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="rounded-xl border border-border bg-surface/50 p-8 md:p-10">
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-ember">
-            Base teórica — Aula 33
-          </p>
-          <h2 className="mt-4 text-3xl font-semibold text-foreground">
-            Campo elétrico variável com o tempo
-          </h2>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.22em] text-ember">
+                Fundamentos físicos e base teórica
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold text-foreground">
+                Campo elétrico variável com o tempo e indutância
+              </h2>
+            </div>
+            <Link
+              to="/fundamentos"
+              className="inline-flex items-center text-sm font-medium text-ember hover:underline"
+            >
+              Ver página completa de fundamentos físicos →
+            </Link>
+          </div>
+
           <p className="mt-4 max-w-3xl text-base leading-8 text-foreground/80">
-            O campo elétrico induzido existe mesmo no vácuo, tem linhas de força fechadas e não
-            admite potencial escalar. Entender isso é o que separa decorar a lei de Faraday de
-            realmente compreendê-la.
+            Faraday-Neumann-Lenz, autoindutância, indutância mútua, energia no campo magnético e
+            circuitos RL. O campo elétrico induzido existe mesmo no vácuo, tem linhas de força
+            fechadas e não admite potencial escalar — compreenda as deduções fundamentais.
           </p>
+
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {fundamentos.map((a) => (
               <Link
@@ -142,18 +154,8 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-8">
-        <div className="grid gap-5 md:grid-cols-2">
-          <Link
-            to="/fundamentos"
-            className="rounded-xl border border-border bg-card/60 p-8 transition-colors hover:border-flux/50"
-          >
-            <h2 className="text-2xl font-semibold text-foreground">Fundamentos físicos</h2>
-            <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              Faraday-Neumann-Lenz, autoindutância e indutância mútua, energia no campo magnético e
-              circuitos RL — com todas as deduções.
-            </p>
-          </Link>
+      <section className="mx-auto max-w-6xl px-5 pb-16">
+        <div className="grid gap-5 md:grid-cols-1">
           <Link
             to="/faq"
             className="rounded-xl border border-border bg-card/60 p-8 transition-colors hover:border-flux/50"
